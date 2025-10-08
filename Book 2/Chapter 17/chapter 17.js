@@ -32,19 +32,21 @@ alert(myFriends[randomFriend]);
 
 var days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 var weather = ["Sunny", "Partly Sunny", "Partly Cloudy", "Cloudy", "Raining", "Snowing", "Thunderstorm", "Foggy"];
-var minTemp = 8;
-var maxTemp = 38;
+var minTemp = 10;
+var maxTemp = 40;
+
 
 generateWeather();
 function generateWeather() {
   for (var i = 0; i < days.length; i++) {
-    var weatherToday = weather[Math.floor(Math.random() * weather.length)];
+    var weatherToday = weather[Math.floor(Math.random() * weather.length)]; // 0-7.9999 but never "8", this will aligne with the index from 0-7 now. This outputs a random weather type 
+
+      // math.random() - 0 - 0.9999
+      // 40 - 10 = 31 0 - 30.99999
+      // 30 + 10 = 39 0 - 39.9999
     var tempToday = Math.floor(Math.random() * (maxTemp - minTemp) + minTemp);
     document.getElementById("5DayWeather").innerHTML +="<div id='" + days[i] + "' class='" + weatherToday + 
       "'><b>Forecast for " + days[i] + 
       ":</b><br><br>" + weatherToday + " and " + tempToday + " degrees.</div>";
   };
 };
-
-
-
